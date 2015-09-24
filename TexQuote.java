@@ -3,7 +3,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-public class TexQuote {
+class TexQuote {
     public static void main(String[] args) {
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
 
