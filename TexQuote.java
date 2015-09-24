@@ -1,50 +1,66 @@
 import java.util.Scanner;
-class TexQuote {
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public class TexQuote {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String input = scan.nextLine();
-        StringBuilder inputBuilder = new StringBuilder(input);
-        char abrir = '`';
-        char cerrar = '\'';
-        char[] output;
-        int contador = 0;
+        BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
+
+        char openCharacter = '`';
+        char closeCharacter = '\'';
+        char[] outputArray;
+        int counter = 0;
         int j = 0;
         int k = 0;
-        boolean aumentar = false;
+        boolean increase = false;
         boolean isOpen = false;
-        String salida;
 
-        for (int i = 0; i < inputBuilder.length(); i++) {
-            if (inputBuilder.charAt(i) == '"') {
-                contador++;
+        String output;
+        String input = "";
+        String line;
+
+        try {
+            while((line = stdin.readLine()) != null && line.length() != 0) {
+                input += line + "\n";
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == '"') {
+                counter++;
             }
         }
-        output = new char[inputBuilder.length() + (contador)];
 
-        for (int i = 0; i < inputBuilder.length(); i++ ) {
-            if(aumentar) {
+        outputArray = new char[input.length() + counter];
+
+        for (int i = 0; i < input.length(); i++ ) {
+            if(increase) {
                 j = i + k;
             } else {
                 j = i;
             }
-            if (inputBuilder.charAt(i) == '"') {
+
+            if (input.charAt(i) == '"') {
                 ++k;
+
                 if(isOpen) {
-                    output[j] = cerrar;
-                    output[j+1] = cerrar;
+                    outputArray[j] = closeCharacter;
+                    outputArray[j+1] = closeCharacter;
                     isOpen = false;
                 } else {
-                    output[j] = abrir;
-                    output[j+1] = abrir;
+                    outputArray[j] = openCharacter;
+                    outputArray[j+1] = openCharacter;
                     isOpen = true;
                 }
-                aumentar = true;
+                increase = true;
             } else {
-                output[j] = inputBuilder.charAt(i);
+                outputArray[j] = input.charAt(i);
             }
         }
-        salida = new String(output);
-        System.out.print(salida);
-
+        output = new String(outputArray);
+        System.out.print(output);
     }
 }
