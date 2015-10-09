@@ -23,7 +23,15 @@ class Main {
 		for(String data: input) {
 			int valor = 1080;
 
-			valor += magia(0, 1, data);
+			int inicio = castear(data, 0);
+			int clave1 = castear(data, 1);
+			int clave2 = castear(data, 2);
+			int clave3 = castear(data, 3);
+
+			valor += comparaValores(inicio, clave1, horario);
+			valor += comparaValores(clave1, clave2, antiHorario);
+			valor += comparaValores(clave2, clave3, horario);
+
 			output.add(valor);
 		}
 
@@ -31,18 +39,8 @@ class Main {
 			System.out.println(data);
 	}
 
-	public static int magia(int i, int j, String data) {
-		int sentido = 0;
-		if (i<=2 && j<=3) {
-			if(i == 0 || i == 2) {
-				sentido = 1;
-			}
-			int valor = comparaValores(Integer.parseInt(data.split(" ")[i]), Integer.parseInt(data.split(" ")[j]), sentido);
-			++i;
-			++j;
-			return valor + magia(i, j, data);
-		}
-		return 0;
+	public static int castear(String data, int position) {
+		return Integer.parseInt(data.split(" ")[position]);
 	}
 
 	public static int comparaValores(int numero1, int numero2, int sentido) {
