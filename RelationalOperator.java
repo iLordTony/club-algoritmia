@@ -3,14 +3,14 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-class RelationalOperator {
+public class RelationalOperator {
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int a, b, c;
         int longitud = 0;
         String line;
-        ArrayList<String> content = new ArrayList<>();
-        ArrayList<String> output = new ArrayList<>();
+        ArrayList<String> content = new ArrayList<String>();
+        ArrayList<String> output = new ArrayList<String>();
 
         try {
             while ((line = br.readLine()) != null && line.length() != 0) {
