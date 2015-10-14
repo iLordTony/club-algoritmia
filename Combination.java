@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-class Main {
+public class Combination {
 	static public final int horario = 1;
 	static public final int antiHorario = 0;
 
@@ -13,10 +13,7 @@ class Main {
 		ArrayList<String> input = new ArrayList<String>();
 		ArrayList<Integer> output = new ArrayList<Integer>();
 
-		while ((line = bf.readLine()) != null && line.length() != 0) {
-			if (line.equals("0 0 0 0")) {
-				break;
-			}
+		while ((line = bf.readLine()) != null && line.length() != 0 && !line.equals("0 0 0 0")) {
 			input.add(line);
 		}
 
